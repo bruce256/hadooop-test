@@ -30,7 +30,7 @@ import org.apache.hadoop.mapreduce.Partitioner;
 public class MyPartitioner<K, V> extends Partitioner<K, V> {
 	
 	/**
-	 * 取首字母在字母表里的序号做分区号，否则就是27
+	 * 取首字母在字母表里的序号做分区号，否则就是26
 	 *
 	 * @param key
 	 * @param value
@@ -42,7 +42,8 @@ public class MyPartitioner<K, V> extends Partitioner<K, V> {
 		char c = key.toString().charAt(0);
 		if (c >= 'a' && c <= 'z') return c - 'a';
 		if (c >= 'A' && c <= 'Z') return c - 'A';
-		return 27;
+		// 第27个区的下标就是26
+		return 26;
 	}
 	
 }

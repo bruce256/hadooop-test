@@ -82,10 +82,10 @@ public class WordCount {
 			job.setOutputValueClass(IntWritable.class);
 			
 			// 6. 指定job处理的原始数据路径
-			FileInputFormat.addInputPath(job, new Path("/Users/LvSheng/Documents/aclImdb_v1_train_datasets/pos"));
+			FileInputFormat.addInputPath(job, new Path("/Users/LvSheng/work/data/aclImdb_v1_train_datasets/pos"));
 //		FileInputFormat.addInputPath(job, new Path("/Users/LvSheng/code/github/hadoop-test/data.txt"));
 			//  7. 指定job输出结果路径
-			FileOutputFormat.setOutputPath(job, new Path("/Users/LvSheng/code/github/hadoop-test/data_out"));
+			FileOutputFormat.setOutputPath(job, new Path("/Users/LvSheng/work/data/aclImdb_v1_train_datasets/data_out"));
 			
 			//  8. 提交作业
 			job.waitForCompletion(true);
