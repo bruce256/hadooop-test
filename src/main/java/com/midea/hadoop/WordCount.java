@@ -1,5 +1,6 @@
 package com.midea.hadoop;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IntWritable;
@@ -25,6 +26,7 @@ import java.util.StringTokenizer;
  * @author lvsheng
  * @date 2019-09-01
  **/
+@Slf4j
 public class WordCount {
 	
 	public static class TokenizerMapper extends Mapper<Object, Text, Text, IntWritable> {
@@ -82,27 +84,29 @@ public class WordCount {
 			job.setOutputValueClass(IntWritable.class);
 			
 			// 6. 指定job处理的原始数据路径
-			FileInputFormat.addInputPath(job, new Path("/Users/LvSheng/work/data/aclImdb_v1_train_datasets/pos"));
+//			FileInputFormat.addInputPath(job, new Path("/Users/LvSheng/work/data/aclImdb_v1_train_datasets/pos"));
+			FileInputFormat.addInputPath(job, new Path(args[0]));
 //		FileInputFormat.addInputPath(job, new Path("/Users/LvSheng/code/github/hadoop-test/data.txt"));
 			//  7. 指定job输出结果路径
-			FileOutputFormat.setOutputPath(job, new Path("/Users/LvSheng/work/data/aclImdb_v1_train_datasets/data_out"));
+//			FileOutputFormat.setOutputPath(job, new Path("/Users/LvSheng/work/data/aclImdb_v1_train_datasets/data_out"));
+			FileOutputFormat.setOutputPath(job, new Path(args[1]));
 			
 			//  8. 提交作业
 			job.waitForCompletion(true);
 			
-			System.out.println("time cost ： " + (System.currentTimeMillis() - start) / 1000 + " s");
+			log.info("time cost ： " + (System.currentTimeMillis() - start) / 1000 + " s");
 		} catch (IOException e) {
-			e.printStackTrace();
+			log.error(e.getMessage(), e);
 		} catch (IllegalStateException e) {
-			e.printStackTrace();
+			log.error(e.getMessage(), e);
 		} catch (IllegalArgumentException e) {
-			e.printStackTrace();
+			log.error(e.getMessage(), e);
 		} catch (InterruptedException e) {
-			e.printStackTrace();
+			log.error(e.getMessage(), e);
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			log.error(e.getMessage(), e);
 		} catch (Exception e) {
-			e.printStackTrace();
+			log.error(e.getMessage(), e);
 		}
 	}
 }
