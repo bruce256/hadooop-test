@@ -109,7 +109,7 @@
                             <transformers>
                                 <transformer
                                         implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>com.midea.hadoop.WordCount</mainClass>
+                                    <mainClass>com.midea.hadoop.mapreduce.wordcount.WordCount</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>

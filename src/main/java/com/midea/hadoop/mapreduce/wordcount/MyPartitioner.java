@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-package com.midea.hadoop;
+package com.midea.hadoop.mapreduce.wordcount;
 
 import org.apache.hadoop.classification.InterfaceAudience;
 import org.apache.hadoop.classification.InterfaceStability;

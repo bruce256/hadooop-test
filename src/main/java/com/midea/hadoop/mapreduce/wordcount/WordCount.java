@@ -1,4 +1,4 @@
-package com.midea.hadoop;
+package com.midea.hadoop.mapreduce.wordcount;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.hadoop.conf.Configuration;
@@ -75,9 +75,9 @@ public class WordCount {
 			//  3. 指定Mapper/Reducer类
 			job.setMapperClass(TokenizerMapper.class);
 			job.setReducerClass(IntSumReducer.class);
-			
-			job.setNumReduceTasks(27);
-			job.setPartitionerClass(MyPartitioner.class);
+
+//			job.setNumReduceTasks(27);
+//			job.setPartitionerClass(MyPartitioner.class);
 			
 			// 5. 指定最终输出的kv数据类型
 			job.setOutputKeyClass(Text.class);
@@ -85,11 +85,13 @@ public class WordCount {
 			
 			// 6. 指定job处理的原始数据路径
 //			FileInputFormat.addInputPath(job, new Path("/Users/LvSheng/work/data/aclImdb_v1_train_datasets/pos"));
-			FileInputFormat.addInputPath(job, new Path(args[0]));
-//		FileInputFormat.addInputPath(job, new Path("/Users/LvSheng/code/github/hadoop-test/data.txt"));
+//			FileInputFormat.addInputPath(job, new Path(args[0]));
+			FileInputFormat.addInputPath(job, new Path("/Users/LvSheng/code/github/hadoop-test/data.txt"));
+			
 			//  7. 指定job输出结果路径
 //			FileOutputFormat.setOutputPath(job, new Path("/Users/LvSheng/work/data/aclImdb_v1_train_datasets/data_out"));
-			FileOutputFormat.setOutputPath(job, new Path(args[1]));
+//			FileOutputFormat.setOutputPath(job, new Path(args[1]));
+			FileOutputFormat.setOutputPath(job, new Path("/Users/LvSheng/code/github/hadoop-test/output"));
 			
 			//  8. 提交作业
 			job.waitForCompletion(true);
